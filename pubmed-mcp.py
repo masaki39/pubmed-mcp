@@ -11,15 +11,15 @@ USER_AGENT = "pubmed-mcp/1.0"
 
 # MCP server
 @mcp.tool()
-async def pubmed_search(query: str, retstart: int = 0) -> Any:
-    """Search PubMed for a given query and return raw efetch XML (returns a fixed batch of 10 results, supports resuming via retstart offset)"""
+async def pubmed_search(query: str, retstart: int = 0, retmax: int = 10) -> Any:
+    """Search PubMed for a given query and return raw efetch XML (returns a fixed batch of retmax results, supports resuming via retstart offset)"""
     # Get ID list via esearch
     url = f"{PUBMED_API_BASE}/esearch.fcgi"
     params = {
         "db": "pubmed",
         "term": query,
         "retmode": "json",
-        "retmax": 10,
+        "retmax": retmax,
         "retstart": retstart,
     }
     headers = {"User-Agent": USER_AGENT}
