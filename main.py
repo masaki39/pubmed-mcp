@@ -12,7 +12,17 @@ USER_AGENT = "pubmed-mcp/1.0"
 # MCP server
 @mcp.tool()
 async def pubmed_search(query: str, retstart: int = 0, retmax: int = 10) -> Any:
-    """Search PubMed for a given query and return raw efetch XML (returns a fixed batch of retmax results, supports resuming via retstart offset)"""
+    """Search PubMed for a given query and return raw efetch XML. To improve search accuracy, you can use the following PubMed search syntax:
+
+    - Keyword Search: Enter words or phrases separated by spaces.
+    - Phrase Search: Use double quotes (" ") for exact phrase matching. Example: "heart attack"
+    - Field Tags: Search in specific fields (e.g., [TI] Title, [AU] Author, [AB] Abstract, [TA] Journal Title Abbreviation). Example: "cancer[TI]"
+    - Boolean Operators: Combine search terms using AND, OR, NOT. AND is applied by default. Examples: "cancer AND therapy", "pain OR ache", "antibiotics NOT penicillin"
+
+    You can also combine multiple syntax elements. Example: "(\"cancer\" OR \"tumor\")[TI] AND \"chemotherapy\"[TIAB]"
+
+    Use the retstart and retmax parameters to control the range of results retrieved.
+    """
     # Get ID list via esearch
     url = f"{PUBMED_API_BASE}/esearch.fcgi"
     params = {
