@@ -52,7 +52,7 @@ Example `mcpServers` configuration (replace `path/to/pubmed-mcp` with your actua
   "mcpServers": {
     "pubmed-mcp": {
       "command": "uv",
-      "args": ["--directory", "path/to/pubmed-mcp", "run", "pubmed-mcp.py"]
+      "args": ["--directory", "path/to/pubmed-mcp", "run", "main.py"]
     }
   }
 }
