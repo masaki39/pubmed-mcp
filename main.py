@@ -42,8 +42,11 @@ async def pubmed_search(query: str, retstart: int = 0, retmax: int = 10) -> Any:
         return efetch_response.text
 
 def main():
-    mcp.run(transport='stdio')
-    print("Pubmed MCP server is running...")
+    try:
+        print("Attempting to start the Pubmed MCP server...")
+        mcp.run(transport='stdio')
+    except Exception as e:
+        print(f"An error occurred during Pubmed MCP server startup or execution: {e}")
 
 if __name__ == "__main__":
     main()
