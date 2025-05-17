@@ -17,7 +17,7 @@ This repository provides an MCP server that utilizes the PubMed API to perform q
 Confirm this command works on your terminal(macOS/Linux) or command prompt/powershell(Windows).
 
 ```bash
-uvx git+https://github.com/masaki39/pubmed-mcp
+uvx git+https://github.com/masaki39/pubmed-mcp.git
 ```
 
 Add the following to your `mcpServers` configuration in your MCP client.
@@ -27,7 +27,7 @@ Add the following to your `mcpServers` configuration in your MCP client.
   "mcpServers": {
     "pubmed-mcp": {
       "command": "uvx",
-      "args": ["git+https://github.com/masaki39/pubmed-mcp"]
+      "args": ["git+https://github.com/masaki39/pubmed-mcp.git"]
     }
   }
 }
