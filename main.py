@@ -51,6 +51,14 @@ async def pubmed_search(query: str, retstart: int = 0, retmax: int = 10) -> Any:
         efetch_response.raise_for_status()
         return efetch_response.text
 
+@mcp.tool()
+async def fetch(url: str) -> Any:
+    """Fetch a given URL and return the raw response."""
+    async with httpx.AsyncClient() as client:
+        response = await client.get(url)
+        response.raise_for_status()
+        return response.text
+
 def main():
     try:
         print("Attempting to start the Pubmed MCP server...")

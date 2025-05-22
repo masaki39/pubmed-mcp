@@ -61,6 +61,7 @@ Example `mcpServers` configuration (replace `path/to/pubmed-mcp` with your actua
 # Provided Commands
 
 - `pubmed_search`: Search PubMed with a query and return efetch XML
+- `fetch`: Fetch a given URL and return the raw response
 
 # Command Details
 
